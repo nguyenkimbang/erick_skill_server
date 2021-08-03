@@ -1,0 +1,569 @@
+{
+    "tables": {
+        "brands": {
+            "tableName": "brands",
+            "schema": {
+                "brand_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "brand_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "brand_name": {
+                    "allowNull": false,
+                    "field": "brand_name",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": {
+                "ae760f7d1b09dd7a46c84234fe2a895e9aceac18": {
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "brand_id"
+                        }
+                    ],
+                    "name": "brands_brand_id",
+                    "options": {
+                        "indexName": "brands_brand_id",
+                        "name": "brands_brand_id",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "categories": {
+            "tableName": "categories",
+            "schema": {
+                "category_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "category_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "category_name": {
+                    "allowNull": false,
+                    "field": "category_name",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": {
+                "1d636c54c968650641ad7b4c2178a792d3407d4f": {
+                    "name": "PK__categori__D54EE9B4A173A05F",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "category_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__categori__D54EE9B4A173A05F",
+                        "name": "PK__categori__D54EE9B4A173A05F",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "customers": {
+            "tableName": "customers",
+            "schema": {
+                "customer_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "customer_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "first_name": {
+                    "allowNull": false,
+                    "field": "first_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "last_name": {
+                    "allowNull": false,
+                    "field": "last_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "phone": {
+                    "allowNull": true,
+                    "field": "phone",
+                    "seqType": "Sequelize.STRING"
+                },
+                "email": {
+                    "allowNull": false,
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "street": {
+                    "allowNull": true,
+                    "field": "street",
+                    "seqType": "Sequelize.STRING"
+                },
+                "city": {
+                    "allowNull": true,
+                    "field": "city",
+                    "seqType": "Sequelize.STRING"
+                },
+                "state": {
+                    "allowNull": true,
+                    "field": "state",
+                    "seqType": "Sequelize.STRING"
+                },
+                "zip_code": {
+                    "allowNull": true,
+                    "field": "zip_code",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": {
+                "419862036135fb3d10fdb169c5ea5f83e293d595": {
+                    "name": "PK__customer__CD65CB85136847C0",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "customer_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__customer__CD65CB85136847C0",
+                        "name": "PK__customer__CD65CB85136847C0",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "order_items": {
+            "tableName": "order_items",
+            "schema": {
+                "order_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "references": {
+                        "model": "orders",
+                        "key": "order_id"
+                    },
+                    "field": "order_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "product_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "references": {
+                        "model": "products",
+                        "key": "product_id"
+                    },
+                    "field": "product_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "quantity": {
+                    "allowNull": false,
+                    "field": "quantity",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "list_price": {
+                    "allowNull": false,
+                    "field": "list_price",
+                    "seqType": "Sequelize.DECIMAL(10, 2)"
+                },
+                "discount": {
+                    "allowNull": false,
+                    "defaultValue": {
+                        "value": 0
+                    },
+                    "field": "discount",
+                    "seqType": "Sequelize.DECIMAL(4, 2)"
+                }
+            },
+            "indexes": {
+                "7dc345692f8295485d1024bf40e43cce12c9841f": {
+                    "name": "PK__order_it__837942D4BBE8C529",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "order_id"
+                        },
+                        {
+                            "name": "product_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__order_it__837942D4BBE8C529",
+                        "name": "PK__order_it__837942D4BBE8C529",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "orders": {
+            "tableName": "orders",
+            "schema": {
+                "order_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "order_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "customer_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "customers",
+                        "key": "customer_id"
+                    },
+                    "field": "customer_id",
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "order_status": {
+                    "allowNull": false,
+                    "field": "order_status",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "order_date": {
+                    "allowNull": false,
+                    "field": "order_date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "required_date": {
+                    "allowNull": false,
+                    "field": "required_date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "shipped_date": {
+                    "allowNull": true,
+                    "field": "shipped_date",
+                    "seqType": "Sequelize.DATE"
+                },
+                "store_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "stores",
+                        "key": "store_id"
+                    },
+                    "field": "store_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "staff_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "staffs",
+                        "key": "staff_id"
+                    },
+                    "field": "staff_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": {
+                "b23dcbae9a3aa10b68e85ba217548a64ab70255c": {
+                    "name": "PK__orders__4659622975EC87A6",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "order_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__orders__4659622975EC87A6",
+                        "name": "PK__orders__4659622975EC87A6",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "products": {
+            "tableName": "products",
+            "schema": {
+                "product_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "product_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "product_name": {
+                    "allowNull": false,
+                    "field": "product_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "brand_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "brands",
+                        "key": "brand_id"
+                    },
+                    "field": "brand_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "category_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "categories",
+                        "key": "category_id"
+                    },
+                    "field": "category_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "model_year": {
+                    "allowNull": false,
+                    "field": "model_year",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "list_price": {
+                    "allowNull": false,
+                    "field": "list_price",
+                    "seqType": "Sequelize.DECIMAL(10, 2)"
+                }
+            },
+            "indexes": {
+                "2dcc03fcc7adae98fe967f127465fa1004662102": {
+                    "name": "PK__products__47027DF58A6E18F7",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "product_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__products__47027DF58A6E18F7",
+                        "name": "PK__products__47027DF58A6E18F7",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "staffs": {
+            "tableName": "staffs",
+            "schema": {
+                "staff_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "staff_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "first_name": {
+                    "allowNull": false,
+                    "field": "first_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "last_name": {
+                    "allowNull": false,
+                    "field": "last_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "email": {
+                    "allowNull": false,
+                    "unique": "UQ__staffs__AB6E616406D457D2",
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "phone": {
+                    "allowNull": true,
+                    "field": "phone",
+                    "seqType": "Sequelize.STRING"
+                },
+                "active": {
+                    "allowNull": false,
+                    "field": "active",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "store_id": {
+                    "allowNull": false,
+                    "references": {
+                        "model": "stores",
+                        "key": "store_id"
+                    },
+                    "field": "store_id",
+                    "onDelete": "NO ACTION",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "manager_id": {
+                    "allowNull": true,
+                    "references": {
+                        "model": "staffs",
+                        "key": "staff_id"
+                    },
+                    "field": "manager_id",
+                    "onDelete": "SET NULL",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": {
+                "aa0bb7f19b5271c936e4da40a3389da7233b8763": {
+                    "name": "PK__staffs__1963DD9CDBFBF4E6",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "staff_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__staffs__1963DD9CDBFBF4E6",
+                        "name": "PK__staffs__1963DD9CDBFBF4E6",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                },
+                "9914e567d4e14629cc070481ada5fc47f9e429b6": {
+                    "name": "UQ__staffs__AB6E616406D457D2",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "email"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "UQ__staffs__AB6E616406D457D2",
+                        "name": "UQ__staffs__AB6E616406D457D2",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "stocks": {
+            "tableName": "stocks",
+            "schema": {
+                "store_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "references": {
+                        "model": "stores",
+                        "key": "store_id"
+                    },
+                    "field": "store_id",
+                    "unique": "stocks_store_id_product_id_unique",
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "product_id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "references": {
+                        "model": "products",
+                        "key": "product_id"
+                    },
+                    "field": "product_id",
+                    "unique": "stocks_store_id_product_id_unique",
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "quantity": {
+                    "allowNull": true,
+                    "field": "quantity",
+                    "seqType": "Sequelize.INTEGER"
+                }
+            },
+            "indexes": {
+                "497ed75d48efcec87aab1f59d65c4ec6ecd3bd54": {
+                    "name": "PK__stocks__E68284D321FCD587",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "store_id"
+                        },
+                        {
+                            "name": "product_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__stocks__E68284D321FCD587",
+                        "name": "PK__stocks__E68284D321FCD587",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        },
+        "stores": {
+            "tableName": "stores",
+            "schema": {
+                "store_id": {
+                    "autoIncrement": true,
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "field": "store_id",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "store_name": {
+                    "allowNull": false,
+                    "field": "store_name",
+                    "seqType": "Sequelize.STRING"
+                },
+                "phone": {
+                    "allowNull": true,
+                    "field": "phone",
+                    "seqType": "Sequelize.STRING"
+                },
+                "email": {
+                    "allowNull": true,
+                    "field": "email",
+                    "seqType": "Sequelize.STRING"
+                },
+                "street": {
+                    "allowNull": true,
+                    "field": "street",
+                    "seqType": "Sequelize.STRING"
+                },
+                "city": {
+                    "allowNull": true,
+                    "field": "city",
+                    "seqType": "Sequelize.STRING"
+                },
+                "state": {
+                    "allowNull": true,
+                    "field": "state",
+                    "seqType": "Sequelize.STRING"
+                },
+                "zip_code": {
+                    "allowNull": true,
+                    "field": "zip_code",
+                    "seqType": "Sequelize.STRING"
+                }
+            },
+            "indexes": {
+                "38cfe46b3c08d20957217b8ff24381805af74cad": {
+                    "name": "PK__stores__A2F2A30C06E745D6",
+                    "unique": true,
+                    "fields": [
+                        {
+                            "name": "store_id"
+                        }
+                    ],
+                    "options": {
+                        "indexName": "PK__stores__A2F2A30C06E745D6",
+                        "name": "PK__stores__A2F2A30C06E745D6",
+                        "indicesType": "UNIQUE",
+                        "type": "UNIQUE"
+                    }
+                }
+            }
+        }
+    },
+    "revision": 2
+}
